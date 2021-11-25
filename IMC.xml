@@ -351,6 +351,7 @@
       <message-type abbrev="Alignment"/>
       <message-type abbrev="StationKeepingExtended"/>
       <message-type abbrev="Magnetometer"/>
+      <message-type abbrev="ExpandingSquare"/>
     </message-group>
 
     <message-group name="Control Command" abbrev="ControlCommand">
@@ -10849,7 +10850,7 @@
     </field>
    </message>
 
-   <message id="3001" name="ExpandingSquare" abbrev="RowsCoverage" source="ccu">
+   <message id="3001" name="ExpandingSquare" abbrev="ExpandingSquare" source="ccu">
     <description>Expading square. 90 degree turns covering a larger and larger area starting in the center.</description>
     <field name="Latitude WGS-84" abbrev="lat" type="fp64_t" unit="rad" min="-1.5707963267948966" max="1.5707963267948966">
       <description>
@@ -10887,26 +10888,21 @@
         Rows bearing angle.
       </description>
     </field>
-    <field name="Cross Angle" abbrev="cross_angle" type="fp64_t" unit="rad" min="-1.047197551197" max="1.047197551197">
-      <description>
-        Rows cross angle reference.
-      </description>
-    </field>
     <field name="Width" abbrev="width" min="0" type="fp32_t" unit="m">
       <description>
         Width of the maneuver.
       </description>
     </field>
-    <field name="Length" abbrev="length" min="0" type="fp32_t" unit="m">
+    <field name="Horizontal step" abbrev="hstep" min="0" type="fp32_t" unit="m">
       <description>
-        Length of the maneuver.
+        Distance between each sweep line.
       </description>
     </field>
     <field name="Flags" abbrev="flags" type="uint8_t" unit="Bitfield" prefix="FLG">
       <description>
         Maneuver optional flags.
       </description>
-      <value id="0x02" name="First Curve Right" abbrev="CURVE_RIGHT">
+      <value id="0x01" name="First Curve Right" abbrev="CURVE_RIGHT">
         <description>
           Shall the vehicle turn towards the right after the first transect (alternatively it will turn left).
         </description>
